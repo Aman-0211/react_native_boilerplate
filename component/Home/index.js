@@ -1,18 +1,33 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import { withNavigation } from "react-navigation";
 
 class Home extends Component {
   state = {};
+
   render() {
+    const data = {
+      name: "Aman",
+      lastName: "Thakur",
+      age: 23
+    };
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Home Page</Text>
+        <Button
+          title="go to second page"
+          onPress={() => {
+            this.props.navigation.navigate("Second_screen", {
+              itemId: data
+            });
+          }}
+        />
       </View>
     );
   }
 }
 
-export default Home;
+export default withNavigation(Home);
 
 const styles = StyleSheet.create({
   container: {
